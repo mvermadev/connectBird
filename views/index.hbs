@@ -1,0 +1,12 @@
+<script>
+    var val = localStorage.getItem('userAuth');   
+    console.log('val : ', val)
+        if(val == null)
+        {
+            location.href = '/login';
+        }
+        else
+        {
+            location.href = '/homeUser';
+        }
+</script>
