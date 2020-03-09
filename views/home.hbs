@@ -1,7 +1,8 @@
 
 <style>
     *{
-        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+        font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif; 
+        overflow-y: hidden;
     }
 
     h2{
@@ -16,8 +17,8 @@
     border: 3px solid dodgerblue;
     border-top: 10px solid dodgerblue;
     /* border-bottom: 7px solid dodgerblue; */
-    box-shadow: 0px 0px 10px gray;
-    border-radius: 8px;
+    box-shadow:  10px 10px 20px #13afc3, -10px -10px 20px #1fffff;
+    border-radius: 36px;
     /* background-color: rgb(202, 252, 210); */
 
     }
@@ -64,11 +65,11 @@
     }
 
     .setName{
-        text-align: left;
-        padding-left: 20px;
+        text-align: center;
         margin-top: 10px;
-        line-height: 10px;
+        line-height: 13px;
         height: 100%;
+        font-weight: bold;
     }
 
     button{
@@ -79,19 +80,21 @@
     padding: 12px 0;
     width: 100%;
     border-radius:0px 0px 7px 7px;
-    font-weight: bold
+    font-weight: bold;
+    border-radius: 0px 0px 36px 36px    ;
 
     }
+
 </style>
         
       
 
-<body style="background-color: rgb(25, 227, 253);">
+<body style="background: linear-gradient(145deg, #1bf3ff, #17cce4);">
 
     <header class="d-flex justify-content-between" style="text-align: center;
 text-shadow: 1px 1px #ffffff; background-color: #ffffff; box-shadow: 1px 0px 7px gray; padding: 0px 20px">
-    <h3 style="color: #563D7C">ConnectBird</h3>
-    <h4 style="cursor:pointer; color: rgb(2, 135, 175)" id="logout">Logout</h4>
+    <h3 style="position: relative; top:5px" style="color: #563D7C">ConnectBird</h3>
+    <img  style="cursor:pointer; width: 40px; " id="logout" src="https://cdn0.iconfinder.com/data/icons/basic-element-blue-filled/614/786_-_Logout-512.png" alt="logout">
     </header>
 
     <div id="mario-chat">
@@ -102,8 +105,10 @@ text-shadow: 1px 1px #ffffff; background-color: #ffffff; box-shadow: 1px 0px 7px
         </div>
 
         {{!-- <input type="text" placeholder="Your Name" id="handle"> --}}
-        <input type="text" placeholder="Write Message..." id="message">
+        <form action="javascript:void(0)">
+        <input type="text" placeholder="Write Message..." id="message" autocomplete="OFF">
         <button type="submit" id="send">Send</button>
+        </form>
         
     </div>
 
@@ -133,6 +138,7 @@ handle = document.getElementById('handle').textContent,
 btn = document.getElementById('send'),
 output = document.getElementById('output'),
 feedback = document.getElementById('feedback');
+var responseUser;
 
 btn.addEventListener('click',()=>{
     socket.emit('chat', {
@@ -148,15 +154,16 @@ message.addEventListener('keypress',()=>{
 
 //Listen for event:
 socket.on('chat', (data)=>{
+    responseUser = data.handle
     feedback.innerHTML = '';
-    output.innerHTML += '<p><strong> ' + data.handle +  ': </strong>'+ data.message + '</p>';
+    output.innerHTML += '<p><strong> ' + responseUser +  ': </strong>'+ data.message + '</p>';
     handle.value = '';
     message.value = '';
 })
 
-socket.on('Typing...', (data)=>{
+socket.on('Typing...', ()=>{
     // feedback.innerHTML = '<p><em>' + data + ' is typing a message...</em></p>';    
-    feedback.innerHTML = '<p><em><strong>' + data + '</strong> is typing... </em></p>'; 
+    feedback.innerHTML = '<p><em><strong>' + 'Some One' + '</strong> is typing... </em></p>'; 
 
 })
 </script>

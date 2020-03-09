@@ -1,5 +1,27 @@
-<body class="container mt-3">
-     <h4 class="text-center">Login here</h4>
+<style>
+  body{
+    border-radius: 36px;
+    background: #61cbea;
+    box-shadow:  14px -14px 43px #4ea2bb, -14px 14px 43px #74f4ff;
+    padding: 30px;
+    margin-top: 10%;
+    width: 25vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+@media only screen and (max-width: 700px)
+{
+  body{
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+</style>
+<body>
+     <h4 class="text-center">Login</h4>
 
     <form  method="POST" action="/sendMail" onsubmit="storeName()">
 
@@ -15,7 +37,7 @@
           </div>
 
         <div class="text-center">
-          <button type="submit" id="otpBtn" class="btn btn-info">Get OTP!</button>
+          <button type="submit" id="otpBtn" class="btn btn-info btn-block">Get OTP!</button>
         </div>
     </form>
 

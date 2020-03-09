@@ -1,4 +1,27 @@
-<body class="container">
+<style>
+  body{
+   border-radius: 36px;
+background: #61ead7;
+box-shadow:  14px -14px 43px #4ebbac, 
+             -14px 14px 43px #74ffff;
+    padding: 30px;
+    margin-top: 10%;
+    width: 25vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+@media only screen and (max-width: 700px)
+{
+  body{
+    width: 80vw;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+</style>
+<body>
     <script>
     let defName = localStorage.getItem('userName');
     if(defName == null)
@@ -7,18 +30,21 @@
     }
     </script>
     
-     <h4 class="text-center">Login here</h4>
+     <h4 class="text-center">OTP</h4>
 
     <form  method="POST" action="/sendOTP">
 
         <div class="form-group" >
-            <label for="exampleInputEmail1">Enter OTP</label>
             <input type="text" class="form-control" name="otp" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter OTP" required >
           </div>
 
             <div class="text-center">
-                <button type="submit" id="otpBtn" class="btn btn-info">SUBMIT!</button>
+                <button type="submit" id="otpBtn" class="btn btn-success btn-block">SUBMIT!</button>
             </div>
         </form>
-
+    <form action="/resendOTP" method="POST">
+        <div class="text-center">
+            <button type="submit" id="otpBtn" class="btn btn-info btn-block mt-2">Resend OTP</button>
+        </div>
+    </form>
 </body>
