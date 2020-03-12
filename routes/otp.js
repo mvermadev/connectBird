@@ -37,8 +37,11 @@ router.post('/sendMail', (req, res)=>{
     const transporter = nodemailer.createTransport({
         service:'gmail',
         auth: {
-            user: 'servicebird365@gmail.com',
-            pass : 'b-i-r-deservices'
+            // user: 'servicebird365@gmail.com',
+            // pass : 'b-i-r-deservices'
+            user: 'verma.bros00@gmail.com',
+            pass : 'sonu1996'
+        
         }
     });
     
